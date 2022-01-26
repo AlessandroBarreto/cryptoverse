@@ -26,8 +26,9 @@ export const Cryptocurrencies = ({ simplified }: componentProps) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    const filteredData = cryptosList?.data?.coins.filter((coin) =>
-      coin.name.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredData = cryptosList?.data?.coins.filter(
+      (coin: { name: string }) =>
+        coin.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     setCryptos(filteredData);
