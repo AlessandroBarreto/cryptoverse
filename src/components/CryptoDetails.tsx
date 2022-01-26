@@ -28,14 +28,6 @@ export const CryptoDetails = () => {
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
   const cryptoDetails = data?.data?.coin;
 
-  const get24hVolume: any = cryptoDetails
-    ? Object.entries(cryptoDetails)?.filter((key) => key[0] == "24hVolume")[
-        "0"
-      ][1]
-    : "";
-
-  console.log(get24hVolume);
-
   const stats = [
     {
       title: "Price to USD",
@@ -45,7 +37,9 @@ export const CryptoDetails = () => {
     { title: "Rank", value: cryptoDetails?.rank, icon: <NumberOutlined /> },
     {
       title: "24h Volume",
-      value: `$ ${get24hVolume && millify(get24hVolume)}`,
+      value: `$ ${
+        cryptoDetails?.["24hVolume"] && millify(cryptoDetails?.["24hVolume"])
+      }`,
       icon: <ThunderboltOutlined />,
     },
     {
