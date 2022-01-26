@@ -8,15 +8,15 @@ import { useGetCryptosQuery } from "../services/cryptoApi";
 interface componentProps {
   simplified: boolean;
 }
-// interface cryptosProps {
-//   uuid: string;
-//   rank: string;
-//   name: string;
-//   iconUrl: string;
-//   price: string;
-//   marketCap: string;
-//   change: string;
-// }
+interface cryptosProps {
+  uuid: string;
+  rank: string;
+  name: string;
+  iconUrl: string;
+  price: number;
+  marketCap: number;
+  change: number;
+}
 
 export const Cryptocurrencies = ({ simplified }: componentProps) => {
   const count = simplified ? 10 : 100;
@@ -52,7 +52,7 @@ export const Cryptocurrencies = ({ simplified }: componentProps) => {
         className="crypto-card-container
       "
       >
-        {cryptos?.map((currency) => (
+        {cryptos?.map((currency: cryptosProps) => (
           <Col
             xs={24}
             sm={12}
