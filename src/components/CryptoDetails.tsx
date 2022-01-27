@@ -138,6 +138,46 @@ export const CryptoDetails = () => {
             </Col>
           ))}
         </Col>
+        <Col className="other-stats-info">
+          <Col className="coin-value-statistics-heading">
+            <Title level={3} className="coin-details-heading">
+              Other Statistics
+            </Title>
+            <p>An overview showing the statistics of all cryptocurrencies.</p>
+          </Col>
+          {genericStats.map(({ icon, title, value }, i) => (
+            <Col className="coin-stats" key={i}>
+              <Col className="coin-stats-name">
+                <Text>{icon}</Text>
+                <Text>{title}</Text>
+              </Col>
+              <Text className="stats">{value}</Text>
+            </Col>
+          ))}
+        </Col>
+      </Col>
+      <Col className="coin-desc-link">
+        <Row className="coin-desc">
+          <Title level={3} className="coin-details-heading">
+            What is {cryptoDetails?.name}?
+          </Title>
+          {HTMLReactParser(cryptoDetails?.description || "")}
+        </Row>
+        <Col className="coin-links">
+          <Title level={3} className="coin-details-heading">
+            {cryptoDetails?.name} Links
+          </Title>
+          {cryptoDetails?.links?.map((link, i: number) => (
+            <Row className="coin-link" key={i}>
+              <Title level={5} className="link-name">
+                {link?.type}
+              </Title>
+              <a href={link?.url} target="_blank" rel="noreferrer">
+                {link?.name}
+              </a>
+            </Row>
+          ))}
+        </Col>
       </Col>
     </Col>
   );
