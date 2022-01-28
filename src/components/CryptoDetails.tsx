@@ -16,6 +16,9 @@ import {
 } from "@ant-design/icons";
 
 //@ts-ignore
+import { Loader } from "./Loader.tsx";
+
+//@ts-ignore
 import { LineChart } from "./LineChart.tsx";
 import { time } from "../utils/cryptoDetails";
 
@@ -37,7 +40,7 @@ export const CryptoDetails = () => {
   });
   const cryptoDetails = data?.data?.coin;
 
-  if (isFetching) return "Loading";
+  if (isFetching) return <Loader />;
 
   const stats = [
     {
